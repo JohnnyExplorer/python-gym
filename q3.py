@@ -10,7 +10,7 @@ def findSubstring(s, k):
         print('count', count)
         if count > len(bestcombo) :
             bestcombo = combo
-        print(bestcombo) 
+        print(bestcombo)
     return bestcombo
 
 def check(s,pattern):

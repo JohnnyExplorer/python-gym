@@ -14,7 +14,6 @@ def get_minimum_difference(a, b):
             diffed = []
             for letter in a[key]:
                 if   b[key].find(letter) :
-                    
                     diff += 1
                     diffed.append(letter)
             for letter in b[key]:
