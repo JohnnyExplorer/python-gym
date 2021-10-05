@@ -37,7 +37,6 @@ class Order:
     return Order.customer.ship_add
 
 
-
   @staticmethod
   def get_expedited_orders_customer_name():
     return Order.get_filtered_info(Order.test_expedited,Order.get_customer_name())
@@ -49,6 +48,33 @@ class Order:
   @staticmethod
   def get_expedited_orders_shipping_address():
       return Order.get_filtered_info(Order.test_expedited,Order.get_customer_ship_add)
+
+
+  @staticmethod
+  def get_order_by_id(orderid):
+      return Order.get_filtered_info(
+        lambda order: order.orderid == orderid,
+        lambda order: order
+      )
+
+  @staticmethod
+  def v1_get_order_by_id(orderid):
+    for order in Order.orders:
+        if order.orderid == orderid:
+          return order
+
+
+  @staticmethod
+  def set_order_expedited(orderid):
+    for order in Order.get_order_by_id(orderid):
+      order.expedited = True
+
+  @staticmethod
+  def v1_set_order_expedited(orderid):
+    for order in Order.orders:
+      if order.orderid == orderid:
+        order.expedited = True
+
 
 
 
