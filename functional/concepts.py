@@ -43,3 +43,29 @@ def f2(x):
 
 print(f2(2))
 print(f2(2)(3))
+
+
+## Pure Functions
+## 1 or 3
+# do it all func
+def get_ints(ints,odd=True,even=True):
+  if odd and even:
+    return [i for i in ints]
+  elif odd:
+    return [i for i in ints if i % 2]
+  elif even:
+    return [i for i in ints if not i % 2]
+  else :
+    return []
+
+## vs
+def get_event_ints(ints):
+  return [i for i in ints if not i % 2]
+
+def get_odd_ints(ints):
+  return [i for i in ints if i % 2]
+
+def get_all_ints(ints):
+  return [i for i in ints]
+
+
