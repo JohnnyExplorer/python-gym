@@ -7,18 +7,6 @@ class Order:
   customer = None
 
   @staticmethod
-  def test_expedited(order):
-    return order.expedited
-
-  @staticmethod
-  def test_not_expedited(order):
-    return not order.expedited
-
-  @staticmethod
-  def get_customer_name(order):
-    return order.customer.name
-
-  @staticmethod
   def get_filtered_info(predicate, func):
       output = []
       for order in Order.orders:
@@ -27,16 +15,44 @@ class Order:
       return output
 
   @staticmethod
-  def get_filtered_orders_customer_names(predicate):
-    output = []
-    for order in Order.orders:
-      if(predicate(order)):
-        output.append(order.customer.name)
-    return output
+  def test_expedited(order):
+    return order.expedited
 
   @staticmethod
-  def v4_get_expedited_orders_customer_name():
+  def test_not_expedited(order):
+    return not order.expedited
+
+
+
+  @staticmethod
+  def get_customer_address():
+    return Order.customer.address
+
+  @staticmethod
+  def get_customer_name(order):
+    return order.customer.name
+
+  @staticmethod
+  def get_customer_ship_add():
+    return Order.customer.ship_add
+
+
+
+  @staticmethod
+  def get_expedited_orders_customer_name():
     return Order.get_filtered_info(Order.test_expedited,Order.get_customer_name())
+
+  @staticmethod
+  def get_expedited_orders_customer_addresses():
+    return Order.get_filtered_info(Order.test_expedited,Order.get_customer_address)
+
+  @staticmethod
+  def get_expedited_orders_shipping_address():
+      return Order.get_filtered_info(Order.test_expedited,Order.get_customer_ship_add)
+
+
+
+
 
   @staticmethod
   def v3_get_expedited_orders_customer_names():
@@ -56,15 +72,6 @@ class Order:
       if order.expedited:
         output.append(order.customer.name)
     return output
-
-  @staticmethod
-  def get_customer_address():
-    return Order.customer.address
-
-  @staticmethod
-  def v2_get_expedited_orders_customer_addresses():
-    return Order.get_filtered_info(Order.test_expedited,Order.get_customer_address)
-
   @staticmethod
   def v1_get_expedited_orders_customer_addresses():
     output = []
@@ -73,13 +80,6 @@ class Order:
         output.append(order.customer.address)
       return output
 
-  @staticmethod
-  def get_customer_ship_add():
-    return Order.customer.ship_add
-
-  @staticmethod
-  def v2_get_expedited_orders_shipping_address():
-      return Order.get_filtered_info(Order.test_expedited,Order.get_customer_ship_add)
 
   @staticmethod
   def v1_get_expedited_orders_shipping_address():
